@@ -1,15 +1,11 @@
 #ifndef BUFAPI_H
 #define BUFAPI_H
 
+/* external standard */
 #include <opencv2/core.hpp>
 #include <opencv2/core/cuda.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/imgproc.hpp>
-#include <set>
 
-
-class buf
+class bufapi
 {
     private:
         cv::cuda::GpuMat image;        
@@ -18,11 +14,12 @@ class buf
         int nrows = 0;
 
     public:
-        buf();
-        ~buf();
+        bufapi();
+        ~bufapi();
 
         void img(const cv::cuda::GpuMat& input);
-        cv::cuda::GpuMat labels();
+        cv::cuda::GpuMat getlabels();
+        std::vector<cv::Rect> getboxes();
         void reset();
 };
 
