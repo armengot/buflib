@@ -5,10 +5,26 @@
 // license that can be found in the LICENSE file.
 
 #include <opencv2/cudafeatures2d.hpp>
-#include <cuda_runtime.h>
-#include <device_launch_parameters.h>
-// #include <labeling_algorithms.h>
-// #include <register.h>
+
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
+
+#include "labeling_algorithms.h"
+#include "register.h"
+
+// This algorithm calls FindAndCompress instead of simple Find. 
+// FindAndCompress updates the label of the starting pixel at each iteration of the loop.
+// This means that, if the equivalence tree is like this:
+
+//      A
+//     /
+//    B
+//   /
+//  C
+
+// then the first iteration updates the label of C, assigning it value B, and the second iteration assigns A.
+// This way, another thread reading C during the process will find an updated value and will avoid a step.
+// FindCompresso performs better than Find only sometimes (rarely?). 
 
 #define BLOCK_ROWS 16
 #define BLOCK_COLS 16
