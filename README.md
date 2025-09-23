@@ -8,7 +8,7 @@ S. Allegretti, F. Bolelli and C. Grana, "*Optimized Block-Based Algorithms to La
 
 <img src="https://img.shields.io/badge/cuda-60%25-red">&nbsp;<img src="https://img.shields.io/badge/C%2FC%2B%2B-80%25-green">&nbsp;<img src="https://img.shields.io/badge/CMakelists.txt-tested-blue">&nbsp;<img src="https://img.shields.io/badge/Ubuntu-20.4-pink">&nbsp;
 
-![original](allegretti.png)
+![original](doc/allegretti.png)
 
 ## API
 
